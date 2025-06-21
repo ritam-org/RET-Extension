@@ -3,12 +3,20 @@
     "displayName": "RET-Extension",
     "description": "An extension to supercharge your RET development!",
     "version": "0.0.1",
+    "publisher": "ritam",
     "engines": {
         "vscode": "^1.101.0"
     },
     "categories": [
-        "Programming Languages"
+        "Programming Languages",
+        "Snippets",
+        "Other"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ritam-org/RET-Extension.git"
+    },
+    "icon": "https://raw.githubusercontent.com/ritam-org/RET-Extension/main/icon.png",
     "contributes": {
         "languages": [
             {
