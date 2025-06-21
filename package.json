@@ -1,0 +1,68 @@
+{
+    "name": "ret-extension",
+    "displayName": "RET-Extension",
+    "description": "An extension to supercharge your RET development!",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.101.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "ret",
+                "aliases": [
+                    "Ritam Email Template",
+                    "ret"
+                ],
+                "extensions": [
+                    ".ret"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "ret",
+                "scopeName": "source.ret",
+                "path": "./syntaxes/ret.tmLanguage.json"
+            }
+        ],
+        "configuration": {
+            "title": "Ritam Email Template Configuration",
+            "properties": {
+                "ret.jsonSeperator": {
+                    "type": "string",
+                    "default": "#FFFF00",
+                    "description": "Color for JSON separator in Ritam Email Template."
+                },
+                "ret.htmlSeperator": {
+                    "type": "string",
+                    "default": "#E44D26",
+                    "description": "Color for HTML separator in Ritam Email Template."
+                },
+                "ret.textSeperator": {
+                    "type": "string",
+                    "default": "#008000",
+                    "description": "Color for Text separator in Ritam Email Template."
+                }
+            }
+        },
+        "snippets": [
+            {
+                "language": "ret",
+                "path": "./snippets/ret.json"
+            }
+        ]
+    },
+    "main": "./extension.js",
+    "activationEvents": [
+        "workspaceContains:**/*.ret"
+    ],
+    "devDependencies": {
+        "@types/vscode": "^1.101.0",
+        "vscode": "^1.1.37"
+    }
+}

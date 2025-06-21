@@ -1,0 +1,145 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Ritam Email Template",
+    "patterns": [
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#json-block"
+        },
+        {
+            "include": "#html-block"
+        },
+        {
+            "include": "#text-block"
+        },
+        {
+            "include": "#if-block"
+        },
+        {
+            "include": "#for-block"
+        },
+        {
+            "include": "#variables"
+        }
+    ],
+    "repository": {
+        "keywords": {
+            "patterns": [{
+                "name": "keyword.control.ret",
+                "match": "\\b(if|while|for|return)\\b"
+            }]
+        },
+        "strings": {
+            "name": "string.quoted.double.ret",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.ret",
+                    "match": "\\\\."
+                }
+            ]
+        },
+
+        "json-block": {
+            "begin": "(?i)^---JSON---\\r?\\n",
+
+            "end": "(?=(?i)^---HTML---)",
+            "beginCaptures": {
+                "0": { "name": "markup.bold.yellow.ret" } 
+            },
+            "contentName": "meta.embedded.block.json",
+            "patterns": [
+                {
+                    "include": "source.json" 
+                }
+            ]
+        },
+
+        "html-block": {
+            "begin": "(?i)^---HTML---\\r?\\n",
+
+            "end": "(?=(?i)^---TEXT---)",
+            "beginCaptures": {
+                "0": { "name": "markup.bold.orange.ret" } 
+            },
+            "contentName": "meta.embedded.block.html",
+            "patterns": [
+                {
+                    "include": "text.html.basic" 
+                },
+
+                {
+                    "include": "#if-block"
+                },
+                {
+                    "include": "#for-block"
+                },
+                {
+                    "include": "#variables"
+                }
+            ]
+        },
+
+        "text-block": {
+            "begin": "(?i)^---TEXT---\\r?\\n",
+
+            "end": "$",
+            "beginCaptures": {
+                "0": { "name": "markup.bold.blue.ret" } 
+            },
+            "contentName": "meta.embedded.block.text",
+            "patterns": [
+
+                {
+                    "include": "#if-block"
+                },
+                {
+                    "include": "#for-block"
+                },
+                {
+                    "include": "#variables"
+                }
+            ]
+        },
+
+        "if-block": {
+            "patterns": [
+            {
+                "name": "keyword.control.if.start.ret",
+                "match": "\\{\\{#if\\s+[^}]+\\}\\}"
+            },
+            {
+                "name": "keyword.control.if.end.ret",
+                "match": "\\{\\{\\/if\\}\\}"
+            }
+            ]
+        },
+        "for-block": {
+            "patterns": [
+            {
+                "name": "keyword.control.for.start.ret",
+                "match": "\\{\\{#for\\s+[^}]+\\}\\}"
+            },
+            {
+                "name": "keyword.control.for.end.ret",
+                "match": "\\{\\{\\/for\\}\\}"
+            }
+            ]
+        },
+        "variables": {
+            "patterns": [
+            {
+                "name": "variable.other.ret",
+                "match": "\\{\\{[^#/][^}]*\\}\\}"
+            }
+            ]
+        }
+    },
+    "scopeName": "source.ret"
+}

@@ -1,0 +1,56 @@
+{
+	"Ritam If Block": {
+		"prefix": "if",
+		"body": [
+			"{{#if ${1:condition}}}",
+			"\t$0",
+			"{{/if}}"
+		],
+		"description": "Inserts a Ritam 'if' block"
+	},
+	"Ritam For Loop": {
+		"prefix": "for",
+		"body": [
+			"{{#for ${1:item} in ${2:collection}}}",
+			"\t$0",
+			"{{/for}}"
+		],
+		"description": "Inserts a Ritam 'for' loop"
+	},
+	"Ritam Basic Template Structure": {
+		"prefix": "retinit",
+		"body": [
+			"---JSON---",
+			"{",
+			"  \"name\": \"${1:Template Name}\",",
+			"  \"description\": \"${2:Short description of this email}\",",
+			"  \"variables\": {",
+			"    \"name\": \"${3:Recipient Name}\"",
+			"  },",
+			"  \"theme\": {",
+			"    \"extraHtml\": \"\"",
+			"  },",
+			"  \"license\": \"${4:MIT}\"",
+			"}",
+			"---HTML---",
+			"<!DOCTYPE html>",
+			"<html lang=\"en\">",
+			"<head>",
+			"    <meta charset=\"UTF-8\">",
+			"    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+			"    <title>${1:Email Name}</title>",
+			"</head>",
+			"<body>",
+			"    <h1>Hello, {{name}}!</h1>",
+			"    <p>This is your basic HTML content.</p>",
+			"    $0",
+			"</body>",
+			"</html>",
+			"---TEXT---",
+			"Hello, {{name}}!",
+			"This is your basic plain text content.",
+			""
+		],
+		"description": "Initializes a basic Ritam Email Template (.ret) file"
+	}
+}
