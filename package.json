@@ -16,7 +16,7 @@
         "type": "git",
         "url": "https://github.com/ritam-org/RET-Extension.git"
     },
-    "icon": "https://raw.githubusercontent.com/ritam-org/RET-Extension/main/icon.png",
+    "icon": "icon.png",
     "contributes": {
         "languages": [
             {
